@@ -1,0 +1,103 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" style="color:white;">Category wise List</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor02">
+       <ul class="navbar-nav mr-auto">
+          <li >
+           <a  class="nav-link" routerLink="/userhome">Click To buy Products<span class="sr-only"></span></a>
+        </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a (click)="filter('')">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTALMyWf01dzcDkwRXVqS3Y-SIXJE4fy3O5Kg&usqp=CAU" width="50px" height="50px"/>
+            <span style="color: aliceblue;">All Category</span>
+         </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <a (click)="filter('clock')">
+           <img src="https://m.media-amazon.com/images/I/81dbAwj+GBL._SX569_.jpg" width="50px" height="50px"/>
+           <span style="color: aliceblue;">Clock</span>
+       </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <a (click)="filter('Statue')">
+        <img src="https://m.media-amazon.com/images/I/91FwdCVfcJL._SX679_.jpghttps://m.media-amazon.com/images/I/91FwdCVfcJL._SX679_.jpg" width="50px" height="50px"/>
+        <span style="color: aliceblue;">Statue</span>
+    </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <a (click)="filter('Antique')">
+        <img src="https://m.media-amazon.com/images/I/81yEwoh2-2L._SX679_.jpg" width="50px" height="50px"/>
+        <span style="color: aliceblue;">Antique</span>
+    </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <a (click)="filter('Shelves')">
+        <img src="https://m.media-amazon.com/images/I/611kiitbKHL._SX679_.jpg" width="50px" height="50px"/>
+        <span style="color: aliceblue;">Shelves</span>
+    </a>
+        <li>
+            <input style="margin-left: 5cm;;" type="text" [(ngModel)]="searchTerm" (keyup)="search($event)" class="form-control col-5" placeholder="serach Produts"/>
+        </li>
+       </ul>
+    </div>
+  </nav>
+  <br>
+  <br>
+  <div style="text-align: right;color: rgb(245, 247, 246);font-size: larger;">
+   Welcome "{{username}}"
+  </div>
+<div class="container" id="main-container">
+    <div class="row">
+      <div *ngFor="let employee of filterCategory |filter:searchKey:'name' "    class="col-md-30 col-xl-3">
+         <div class="card m-b-20" aria-setsize="49" style="background-color: rgb(0, 242, 255);">
+            <div class="card-body column">
+
+               <div class="col-6 card-title align-self-center mb-0">
+                  <img src={{employee?.image}} width="200px"height="200px"/>
+               </div>
+            </div>
+            <ul class="list-group">
+               <li style="color:rgb(255, 0, 195);white-space: nowrap;overflow: hidden; text-overflow: ellipsis; overflow-wrap: break-word;" class="list-group-item" >{{employee?.name}}</li>
+               <li style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis; overflow-wrap: break-word;" class="list-group-item">
+                  <i class="fa-solid fa-book-journal-whills"></i>&nbsp;&nbsp;Description -{{employee?.description}}</li>
+               <li class="list-group-item"><i class="fa-solid fa-dumpster-fire"></i>&nbsp;&nbsp;Category -{{employee?.category}}</li>
+               <li class="list-group-item" style="color:rgb(47, 7, 247);"><i class="fa-solid fa-indian-rupee-sign"></i>&nbsp;&nbsp;Price -{{employee?.price}}</li>
+            </ul>
+            <div class="card-body">
+               <button (click)="getProduct(employee.id)" class="btn btn-primary btn-rounded mb-4" data-toggle="modal" data-target="#modalRegisterForm">View Details</button>
+
+               <div class="float-right btn-group btn-group-sm">
+               </div>
+            </div>
+         </div>
+      </div>
+    </div>
+    <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="div container">
+  <div class="modal-dialog col-36" role="document" >
+    <div class="modal-content" *ngIf="item" style="background-color: rgb(0, 174, 255);">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-150 font-weight-bold">Product Details</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3" >
+        <div class="modal-footer d-flex justify-content-center">
+            <img src="{{item.image}}" width="300px;"height="300px">
+        </div>
+
+        <div class="md-form mb-4">
+         <li style="color: rgb(189, 45, 233);size: .5cm;" class="list-group-item"><i class="fa-solid fa-dumpster-fire"></i>&nbsp;&nbsp;{{item?.name}}</li>
+         <li style="color: blue;" class="list-group-item">
+            <i class="fa-solid fa-book-journal-whills"></i>&nbsp;&nbsp;Description -{{item?.description}}</li>
+         <li class="list-group-item"><i class="fa-solid fa-dumpster-fire"></i>&nbsp;&nbsp;Category -{{item?.category}}</li>
+         <li class="list-group-item" style="color:rgb(47, 7, 247);"><i class="fa-solid fa-indian-rupee-sign"></i>&nbsp;&nbsp;Price -{{item?.price}}</li>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="text-center">
+  <button href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalRegisterForm">Launch
+   Close</button>
+</div>
+</div>s
+</div>

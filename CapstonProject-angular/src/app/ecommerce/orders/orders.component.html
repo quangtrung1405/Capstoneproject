@@ -1,0 +1,27 @@
+
+<div class="row card-deck">
+    <div class="col-lg-4 col-md-6 mb-5" *ngFor="let order of orders.productOrders">
+        <div class="card text-center"style="margin-top:20px;margin-bottom:30px">
+            <div class="card-header">
+                <h4 style="color: rgb(41, 14, 246);">{{order.product.name}}</h4>
+            </div>
+            <div class="card-body" >
+                <a href="#"><img class="card-img-top" src={{order.product.image}} alt="" style=" height:18rem;">{{ order.product.price }} x {{ order.quantity}}</a>
+            </div>
+         </div>
+     </div>
+     <h1 class="text-right" style="color: rgb(255, 0, 0);font-weight: bolder;">Total amount: &#8377;{{ total }}</h1>
+            <button class="btn btn-primary btn-block" (click)="pay()" *ngIf="!paid">Pay</button>
+                <div class="alert alert-success" role="alert" *ngIf="paid">
+                    <strong>Congratulation!</strong>  ordered successfully.
+                </div>
+        </div>
+
+
+
+
+
+
+
+
+

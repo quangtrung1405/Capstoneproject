@@ -1,0 +1,21 @@
+<br>
+<hr>
+<br><hr>
+
+<div class="card text-white  mb-3" style="margin-top:20px;margin-bottom:30px;background-color: rgb(89, 0, 171);">
+    <div class="card-header text-center">Cart Page</div>
+    <div class="card-body" >
+        <hr>
+        <h6 class="card-title">Proceed to checkout</h6>
+
+        <div style="padding-bottom: 1cm;" *ngFor="let order of orders.productOrders">
+            <div><img  width="200px" hieght="200px"src="{{order.product.image}}"/> 
+          <h2>{{order.product.price}} * {{order.quantity}}</h2>
+             Remaining   {{ order.product.stocks }} - {{ order.quantity}} pcs.
+        </div></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <h2 class="card-title">Total:&#8377; {{total}}</h2>
+        <button class="btn btn-light btn-block" (click)="finishOrder()"
+                [disabled]="orders.productOrders.length == 0">Checkout
+        </button>
+    </div>
+</div>

@@ -1,0 +1,75 @@
+
+<div>
+    <div style="background-color: rgb(53, 53, 55)">
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;"  style ="box-shadow: 3px 3px rgb(221, 209, 209);height: 170px; padding : 5px;">
+
+      <div style="margin-right: auto; margin-left: 20px;">
+        <img src="../assets/images/logo.jpg" width="70px" height="60px">&nbsp;
+        <a class="navbar-brand" style="margin-right: auto; padding-top: 10px;color: azure;size: 20px;" routerLink="/">ShopForHome</a></div>
+
+        <h4 [hidden]="!inbound" (click)="inbound = !inbound">
+          <button class="btn btn-warning" routerLink="adminlogin">Admin</button>
+        </h4>
+    </nav>
+  </div>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" style="color:white;">Hi!, Welcome</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor02">
+       <ul class="navbar-nav mr-auto">
+          <li >
+           <button   class="btn btn-success" (click)="firstLogin()">Login<span class="sr-only"></span></button>
+        </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a (click)="filter('')">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTALMyWf01dzcDkwRXVqS3Y-SIXJE4fy3O5Kg&usqp=CAU" width="50px" height="50px"/>
+            <span style="color: aliceblue;">All Category</span>
+         </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <a (click)="filter('clock')">
+           <img src="https://m.media-amazon.com/images/I/81dbAwj+GBL._SX569_.jpg" width="50px" height="50px"/>
+           <span style="color: aliceblue;">Clock</span>
+       </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <a (click)="filter('Statue')">
+        <img src="https://m.media-amazon.com/images/I/91FwdCVfcJL._SX679_.jpghttps://m.media-amazon.com/images/I/91FwdCVfcJL._SX679_.jpg" width="50px" height="50px"/>
+        <span style="color: aliceblue;">Statue</span>
+    </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <a (click)="filter('Antique')">
+        <img src="https://m.media-amazon.com/images/I/81yEwoh2-2L._SX679_.jpg" width="50px" height="50px"/>
+        <span style="color: aliceblue;">Antique</span>
+    </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <a (click)="filter('Shelves')">
+        <img src="https://m.media-amazon.com/images/I/611kiitbKHL._SX679_.jpg" width="50px" height="50px"/>
+        <span style="color: aliceblue;">Shelves</span>
+    </a>
+        <li>
+            <input style="margin-left: 5cm;;" type="text" [(ngModel)]="searchTerm" (keyup)="search($event)" class="form-control col-5" placeholder="Search Products"/>
+        </li>
+       </ul>
+    </div>
+  </nav>
+<div class="container" id="main-container">
+    <div class="row">
+      <div *ngFor="let employee of filterCategory |filter:searchKey:'name' "    class="col-md-30 col-xl-3">
+         <div class="card m-b-20" aria-setsize="49" style="background-color: rgb(235, 245, 245);">
+            <div class="card-body column">
+               <div class="col-6 card-title align-self-center mb-0">
+                  <img src={{employee?.image}} width="200px"height="200px"/>
+               </div>
+            </div>
+            <ul class="list-group">
+               <li style="color:rgb(255, 0, 195);white-space: nowrap;overflow: hidden; text-overflow: ellipsis; overflow-wrap: break-word;" class="list-group-item" >{{employee?.name}}</li>
+               <li style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis; overflow-wrap: break-word;" class="list-group-item">
+                  <i class="fa-solid fa-book-journal-whills"></i>&nbsp;&nbsp;Description -{{employee?.description}}</li>
+               <li class="list-group-item"><i class="fa-solid fa-dumpster-fire"></i>&nbsp;&nbsp;Category -{{employee?.category}}</li>
+               <li class="list-group-item" style="color:orangered; font-size: 16px"><i class="fa-solid fa-money-bill-wave"></i>&nbsp;&nbsp;Price -{{employee?.price|currency: "$"}}</li>
+            </ul>
+            <div class="card-body">
+              <button class="btn btn-success" (click)="firstLogin()">Buy Now</button>
+               <div class="float-right btn-group btn-group-sm">
+               </div>
+            </div>
+         </div>
+      </div>
+    </div>
+

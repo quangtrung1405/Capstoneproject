@@ -1,0 +1,50 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.content_body{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+}
+
+.login-container{
+    
+        background-image: url("https://image.freepik.com/free-photo/shopping-cart-with-gifts-plain-background_23-2148288246.jpg");
+        margin-top:15px;
+        border: 1px solid blue;
+        width:550px;
+        padding:45px;
+        position:absolute;
+        top:10%;
+        left:30%;
+        height: fit-content
+    
+}
+.login-logo{
+    position: relative;
+    margin-left: -41.5%;
+}
+.login-form-1{
+    padding: 20%;
+   
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+
+.login-form-2{
+
+    padding: 9%;
+    
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+.login-form-2 h3{
+    text-align: center;
+    margin-bottom:12%;
+    color:black;
+}
+  h6{
+      color: firebrick;
+  }

@@ -1,0 +1,47 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" style="color:white;">Stock Management</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor02">
+       <ul class="navbar-nav mr-auto">
+          <li >
+           <a class="nav-link" routerLink="/showusers">Go To User Menu <span class="sr-only"></span></a>
+        </li>
+        <li >
+         <a class="nav-link" routerLink="/products">Go To Product Menu <span class="sr-only"></span></a>
+      </li>
+        <li >
+         <a class="nav-link" routerLink="/adminhome">Go To Reports <span class="sr-only"></span></a>
+      </li>
+       </ul>
+       <button class="btn btn-danger" (click)=" adminlogout()">Logout</button>
+    </div>
+  </nav>
+  <app-csv-upload></app-csv-upload>
+  <br>
+  <br>
+
+
+<h1 style="text-align: center;color: rgb(252, 9, 9);">Order Details</h1>
+<li>
+    <input style="margin-left: 5cm;;" type="text" [(ngModel)]="searchTerm" (keyup)="search($event)" class="form-control col-5" placeholder="Enter date"/>
+</li>
+<div class="row card-deck">
+   <div class="col-lg-10 col-md-8 mb-6" *ngFor="let order of orders |filter:searchKey:'dateCreated'">
+       <div class="card text-center"style="margin-top:20px;margin-bottom:30px">
+           <div class="card-header">
+               <h4 style="color: rgb(41, 14, 246);">Id -{{order.id}}</h4>
+           </div>
+           <div  >
+               <h2 class="card-title">Date -{{order.dateCreated}}</h2>
+               <h2 class="card-title">Status -{{order.status}}</h2>
+               <div class="row">
+
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+
